@@ -1,10 +1,9 @@
-package org.example.serveremulator.Mappers;
+package org.example.serveremulator.mapper;
 
 import org.example.serveremulator.DTO.StudentRequest;
 import org.example.serveremulator.DTO.StudentResponse;
-import org.example.serveremulator.Entityes.Group;
-import org.example.serveremulator.Entityes.Student;
-import org.example.serveremulator.Enums.StudentEnum;
+import org.example.serveremulator.entity.Group;
+import org.example.serveremulator.entity.Student;
 import org.springframework.stereotype.Component;
 
 @Component

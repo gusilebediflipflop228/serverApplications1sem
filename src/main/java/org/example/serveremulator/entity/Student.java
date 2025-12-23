@@ -1,7 +1,7 @@
-package org.example.serveremulator.Entityes;
+package org.example.serveremulator.entity;
 
 import jakarta.persistence.*;
-import org.example.serveremulator.Enums.StudentEnum;
+import org.example.serveremulator.enums.StudentEnum;
 
 @Entity
 @Table(name = "students")

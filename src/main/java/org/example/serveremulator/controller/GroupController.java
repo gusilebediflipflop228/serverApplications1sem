@@ -1,11 +1,11 @@
-package org.example.serveremulator.Controllers;
+package org.example.serveremulator.controller;
 
 
 import org.example.serveremulator.DTO.GroupRequest;
 import org.example.serveremulator.DTO.GroupResponse;
-import org.example.serveremulator.Entityes.Group;
-import org.example.serveremulator.Mappers.GroupMapper;
-import org.example.serveremulator.Services.GroupService;
+import org.example.serveremulator.entity.Group;
+import org.example.serveremulator.mapper.GroupMapper;
+import org.example.serveremulator.service.GroupService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

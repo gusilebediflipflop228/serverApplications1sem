@@ -1,10 +1,10 @@
-package org.example.serveremulator.Mappers;
+package org.example.serveremulator.mapper;
 
 
 import org.example.serveremulator.DTO.AttendanceRequest;
 import org.example.serveremulator.DTO.AttendanceResponse;
-import org.example.serveremulator.Entityes.Attendance;
-import org.example.serveremulator.Entityes.Lesson;
+import org.example.serveremulator.entity.Attendance;
+import org.example.serveremulator.entity.Lesson;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.example.serveremulator.Enums;
+package org.example.serveremulator.enums;
 
 
 public enum ErrorCode {

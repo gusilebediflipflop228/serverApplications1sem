@@ -1,5 +1,5 @@
-package org.example.serveremulator.Exceptions;
-import org.example.serveremulator.Enums.ErrorCode;
+package org.example.serveremulator.exception;
+import org.example.serveremulator.enums.ErrorCode;
 import org.springframework.http.HttpStatus;
 
 public abstract class ApiException extends RuntimeException {

@@ -1,10 +1,10 @@
-package org.example.serveremulator.Controllers;
+package org.example.serveremulator.controller;
 
 import org.example.serveremulator.DTO.StudentRequest;
 import org.example.serveremulator.DTO.StudentResponse;
-import org.example.serveremulator.Entityes.Student;
-import org.example.serveremulator.Mappers.StudentMapper;
-import org.example.serveremulator.Services.StudentService;
+import org.example.serveremulator.entity.Student;
+import org.example.serveremulator.mapper.StudentMapper;
+import org.example.serveremulator.service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,10 +1,10 @@
-package org.example.serveremulator.Controllers;
+package org.example.serveremulator.controller;
 
 import org.example.serveremulator.DTO.LessonRequest;
 import org.example.serveremulator.DTO.LessonResponse;
-import org.example.serveremulator.Entityes.Lesson;
-import org.example.serveremulator.Mappers.LessonMapper;
-import org.example.serveremulator.Services.LessonService;
+import org.example.serveremulator.entity.Lesson;
+import org.example.serveremulator.mapper.LessonMapper;
+import org.example.serveremulator.service.LessonService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

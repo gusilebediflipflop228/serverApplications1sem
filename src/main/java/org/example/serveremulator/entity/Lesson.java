@@ -1,4 +1,4 @@
-package org.example.serveremulator.Entityes;
+package org.example.serveremulator.entity;
 
 
 import jakarta.persistence.*;

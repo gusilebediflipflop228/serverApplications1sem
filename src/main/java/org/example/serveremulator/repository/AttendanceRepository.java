@@ -1,8 +1,7 @@
-package org.example.serveremulator.Repositories;
+package org.example.serveremulator.repository;
 
-import org.example.serveremulator.Entityes.Attendance;
+import org.example.serveremulator.entity.Attendance;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 

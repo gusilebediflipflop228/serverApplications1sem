@@ -1,15 +1,15 @@
-package org.example.serveremulator.Services;
+package org.example.serveremulator.service;
 
 import jakarta.transaction.Transactional;
-import org.example.serveremulator.Entityes.Attendance;
-import org.example.serveremulator.Entityes.Lesson;
-import org.example.serveremulator.Entityes.Student;
-import org.example.serveremulator.Enums.ErrorCode;
-import org.example.serveremulator.Exceptions.NotFoundException;
-import org.example.serveremulator.Exceptions.ValidationException;
-import org.example.serveremulator.Repositories.AttendanceRepository;
-import org.example.serveremulator.Repositories.LessonRepository;
-import org.example.serveremulator.Repositories.StudentRepository;
+import org.example.serveremulator.entity.Attendance;
+import org.example.serveremulator.entity.Lesson;
+import org.example.serveremulator.entity.Student;
+import org.example.serveremulator.enums.ErrorCode;
+import org.example.serveremulator.exception.NotFoundException;
+import org.example.serveremulator.exception.ValidationException;
+import org.example.serveremulator.repository.AttendanceRepository;
+import org.example.serveremulator.repository.LessonRepository;
+import org.example.serveremulator.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,6 +1,6 @@
-package org.example.serveremulator.Exceptions;
+package org.example.serveremulator.exception;
 
-import org.example.serveremulator.Enums.ErrorCode;
+import org.example.serveremulator.enums.ErrorCode;
 import org.springframework.http.HttpStatus;
 
 public class ValidationException extends ApiException {

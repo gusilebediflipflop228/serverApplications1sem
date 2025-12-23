@@ -1,4 +1,4 @@
-package org.example.serveremulator.Exceptions;
+package org.example.serveremulator.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

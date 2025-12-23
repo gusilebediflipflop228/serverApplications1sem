@@ -1,7 +1,7 @@
-package org.example.serveremulator.Exceptions;
+package org.example.serveremulator.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.example.serveremulator.Enums.ErrorCode;
+import org.example.serveremulator.enums.ErrorCode;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
