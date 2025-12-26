@@ -1,8 +1,8 @@
 package org.example.serveremulator.mapper;
 
 
-import org.example.serveremulator.DTO.SubjectRequest;
-import org.example.serveremulator.DTO.SubjectResponse;
+import org.example.serveremulator.DTO.subject.SubjectRequest;
+import org.example.serveremulator.DTO.subject.SubjectResponse;
 import org.example.serveremulator.entity.Subject;
 import org.springframework.stereotype.Component;
 

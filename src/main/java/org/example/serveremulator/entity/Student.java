@@ -27,7 +27,6 @@ public class Student {
     @JoinColumn(name = "group_id")
     private Group group;
 
-    // Конструкторы
     public Student() {}
 
     public Student(String lastName, String firstName, String middleName, StudentEnum status, Group group) {
@@ -38,7 +37,6 @@ public class Student {
         this.group = group;
     }
 
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }
@@ -88,7 +86,6 @@ public class Student {
         this.group = group;
     }
 
-    // equals и hashCode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -102,7 +99,6 @@ public class Student {
         return getClass().hashCode();
     }
 
-    // Удобный метод для получения полного имени
     public String getFullName() {
         return lastName + " " + firstName + (middleName != null ? " " + middleName : "");
     }

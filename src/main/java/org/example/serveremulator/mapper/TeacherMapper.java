@@ -1,7 +1,7 @@
 package org.example.serveremulator.mapper;
 
-import org.example.serveremulator.DTO.TeacherRequest;
-import org.example.serveremulator.DTO.TeacherResponse;
+import org.example.serveremulator.DTO.teacher.TeacherRequest;
+import org.example.serveremulator.DTO.teacher.TeacherResponse;
 import org.example.serveremulator.entity.Teacher;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package org.example.serveremulator.DTO;
+package org.example.serveremulator.DTO.attendance;
 
 import java.util.List;
 

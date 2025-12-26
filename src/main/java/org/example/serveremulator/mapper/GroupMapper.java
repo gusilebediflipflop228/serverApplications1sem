@@ -1,8 +1,8 @@
 package org.example.serveremulator.mapper;
 
 
-import org.example.serveremulator.DTO.GroupRequest;
-import org.example.serveremulator.DTO.GroupResponse;
+import org.example.serveremulator.DTO.group.GroupRequest;
+import org.example.serveremulator.DTO.group.GroupResponse;
 import org.example.serveremulator.entity.Group;
 import org.springframework.stereotype.Component;
 

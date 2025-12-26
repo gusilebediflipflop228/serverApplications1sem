@@ -2,10 +2,7 @@ package org.example.serveremulator.service;
 
 import jakarta.transaction.Transactional;
 import org.example.serveremulator.entity.Lesson;
-import org.example.serveremulator.repository.GroupRepository;
-import org.example.serveremulator.repository.LessonRepository;
-import org.example.serveremulator.repository.SubjectRepository;
-import org.example.serveremulator.repository.TeacherRepository;
+import org.example.serveremulator.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -23,15 +20,18 @@ public class LessonService {
     private final TeacherRepository teacherRepository;
     private final SubjectRepository subjectRepository;
     private final GroupRepository groupRepository;
+    private final AttendanceRepository attendanceRepository;
 
     public LessonService(LessonRepository lessonRepository,
                          TeacherRepository teacherRepository,
                          SubjectRepository subjectRepository,
-                         GroupRepository groupRepository) {
+                         GroupRepository groupRepository,
+                         AttendanceRepository attendanceRepository) {
         this.lessonRepository = lessonRepository;
         this.teacherRepository = teacherRepository;
         this.subjectRepository = subjectRepository;
         this.groupRepository = groupRepository;
+        this.attendanceRepository = attendanceRepository;
     }
 
     public List<Lesson> getAllLessons() {
@@ -46,7 +46,7 @@ public class LessonService {
             );
         }
 
-        return lessonRepository.findById(id)
+        return lessonRepository.findWithDetailsById(id) // Используем новый метод
                 .orElseThrow(() -> new NotFoundException(
                         ErrorCode.LESSON_NOT_FOUND,
                         "Lesson with id " + id + " not found"
@@ -277,13 +277,15 @@ public class LessonService {
             );
         }
 
-        if (!lessonRepository.existsById(id)) {
-            throw new NotFoundException(
-                    ErrorCode.LESSON_NOT_FOUND,
-                    "Lesson not found with id: " + id
-            );
-        }
+        Lesson lesson = lessonRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(
+                        ErrorCode.LESSON_NOT_FOUND,
+                        "Lesson with id " + id + " not found"
+                ));
 
-        lessonRepository.deleteById(id);
+        attendanceRepository.deleteByLessonId(id);
+
+        lessonRepository.delete(lesson);
+
     }
 }

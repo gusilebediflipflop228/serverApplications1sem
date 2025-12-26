@@ -1,4 +1,4 @@
-package org.example.serveremulator.DTO;
+package org.example.serveremulator.DTO.student;
 
 import org.example.serveremulator.entity.Group;
 import org.example.serveremulator.enums.StudentEnum;

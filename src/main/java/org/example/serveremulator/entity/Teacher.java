@@ -22,9 +22,9 @@ public class Teacher {
 
     public Teacher() {}
 
-    public Teacher(String lastName, String midleName, String firstName) {
+    public Teacher(String lastName, String middleName, String firstName) {
         this.lastName = lastName;
-        this.middleName = midleName;
+        this.middleName = middleName;
         this.firstName = firstName;
     }
 

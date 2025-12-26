@@ -1,4 +1,4 @@
-package org.example.serveremulator.DTO;
+package org.example.serveremulator.DTO.lesson;
 import java.time.LocalDate;
 
 public class LessonRequest {

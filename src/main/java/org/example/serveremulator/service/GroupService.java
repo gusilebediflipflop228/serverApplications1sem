@@ -7,6 +7,8 @@ import org.example.serveremulator.enums.ErrorCode;
 import org.example.serveremulator.exception.NotFoundException;
 import org.example.serveremulator.exception.ValidationException;
 import org.example.serveremulator.repository.GroupRepository;
+import org.example.serveremulator.repository.LessonRepository;
+import org.example.serveremulator.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,9 +18,15 @@ import java.util.List;
 @Transactional
 public class GroupService {
     private final GroupRepository groupRepository;
+    private final StudentRepository studentRepository;
+    private final LessonRepository lessonRepository;
 
-    public GroupService(GroupRepository groupRepository) {
+    public GroupService(GroupRepository groupRepository,
+                        StudentRepository studentRepository,
+                        LessonRepository lessonRepository) {
         this.groupRepository = groupRepository;
+        this.studentRepository = studentRepository;
+        this.lessonRepository = lessonRepository;
     }
 
     public List<Group> getAllGroups() {
@@ -39,6 +47,7 @@ public class GroupService {
                         "Group with id " + id + " not found"
                 ));
     }
+
     public Group createGroup(Group group) {
         if (group == null) {
             throw new ValidationException(
@@ -106,17 +115,19 @@ public class GroupService {
             );
         }
 
-        if (!groupRepository.existsById(id)) {
-            throw new NotFoundException(
-                    ErrorCode.GROUP_NOT_FOUND,
-                    "Group with id " + id + " not found"
-            );
-        }
+        Group group = groupRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(
+                        ErrorCode.GROUP_NOT_FOUND,
+                        "Group with id " + id + " not found"
+                ));
 
-        groupRepository.deleteById(id);
+        studentRepository.deleteByGroupId(id);
+
+        lessonRepository.deleteByGroupId(id);
+
+        groupRepository.delete(group);
     }
 
-    //Вспомогательный метод для проверки существования группы
     public boolean existsById(Long id) {
         if (id == null || id <= 0) {
             return false;

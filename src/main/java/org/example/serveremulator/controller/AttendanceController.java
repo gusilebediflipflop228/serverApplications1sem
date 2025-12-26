@@ -2,8 +2,8 @@ package org.example.serveremulator.controller;
 
 
 
-import org.example.serveremulator.DTO.AttendanceRequest;
-import org.example.serveremulator.DTO.AttendanceResponse;
+import org.example.serveremulator.DTO.attendance.AttendanceRequest;
+import org.example.serveremulator.DTO.attendance.AttendanceResponse;
 import org.example.serveremulator.mapper.AttendanceMapper;
 import org.example.serveremulator.service.AttendanceService;
 import org.springframework.http.HttpStatus;

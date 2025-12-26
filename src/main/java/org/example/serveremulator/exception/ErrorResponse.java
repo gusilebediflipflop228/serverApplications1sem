@@ -35,11 +35,10 @@ public class ErrorResponse {
         this.message = exception.getMessage();
         this.details = exception.getDetails();
 
-        // Если у исключения есть ErrorCode - используем его
         if (exception.getErrorCode() != null) {
             this.errorCode = exception.getErrorCode().getCode();
         } else {
-            this.errorCode = null;  // Для старых исключений
+            this.errorCode = null;
         }
 
         this.timestamp = LocalDateTime.now();

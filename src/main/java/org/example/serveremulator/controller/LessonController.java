@@ -1,7 +1,7 @@
 package org.example.serveremulator.controller;
 
-import org.example.serveremulator.DTO.LessonRequest;
-import org.example.serveremulator.DTO.LessonResponse;
+import org.example.serveremulator.DTO.lesson.LessonRequest;
+import org.example.serveremulator.DTO.lesson.LessonResponse;
 import org.example.serveremulator.entity.Lesson;
 import org.example.serveremulator.mapper.LessonMapper;
 import org.example.serveremulator.service.LessonService;
@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/lessons")
 public class LessonController {
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(LessonController.class);
     private final LessonService lessonService;
     private final LessonMapper lessonMapper;
 
@@ -34,7 +35,7 @@ public class LessonController {
 
     @GetMapping("/{id}")
     public ResponseEntity<LessonResponse> getLessonById(@PathVariable Long id) {
-        Lesson lesson = lessonService.getLessonById(id); // Будет брошено исключение если не найдено
+        Lesson lesson = lessonService.getLessonById(id);
         return ResponseEntity.ok(lessonMapper.toResponse(lesson));
     }
 
@@ -62,17 +63,36 @@ public class LessonController {
 
     @PostMapping
     public ResponseEntity<LessonResponse> createLesson(@RequestBody LessonRequest request) {
+        logger.info("POST /api/lessons - Создание занятия. Request: {}", request);
+
         Lesson lesson = lessonMapper.toEntity(request);
+        logger.info("Создана сущность Lesson: id={}, date={}, lessonNumber={}",
+                lesson.getId(), lesson.getDate(), lesson.getLessonNumber());
+
         Lesson createdLesson = lessonService.createLesson(lesson);
+        logger.info("Сохранена в БД Lesson с id: {}", createdLesson.getId());
+
+        Lesson lessonWithDetails = lessonService.getLessonById(createdLesson.getId());
+        logger.info("Перезагружена Lesson с деталями. Teacher: {}, Subject: {}, Group: {}",
+                lessonWithDetails.getTeacher(),
+                lessonWithDetails.getSubject(),
+                lessonWithDetails.getGroup());
+
+        LessonResponse response = lessonMapper.toResponse(lessonWithDetails);
+        logger.info("Создан Response: {}", response);
+
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(lessonMapper.toResponse(createdLesson));
+                .body(response);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<LessonResponse> updateLesson(@PathVariable Long id, @RequestBody LessonRequest request) {
         Lesson lesson = lessonMapper.toEntity(request);
         Lesson updatedLesson = lessonService.updateLesson(id, lesson);
-        return ResponseEntity.ok(lessonMapper.toResponse(updatedLesson));
+
+        Lesson lessonWithDetails = lessonService.getLessonById(updatedLesson.getId());
+
+        return ResponseEntity.ok(lessonMapper.toResponse(lessonWithDetails));
     }
 
     @DeleteMapping("/{id}")

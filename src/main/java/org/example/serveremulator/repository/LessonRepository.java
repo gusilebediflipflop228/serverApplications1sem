@@ -1,19 +1,27 @@
 package org.example.serveremulator.repository;
 
 import org.example.serveremulator.entity.Lesson;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
 public interface LessonRepository extends JpaRepository<Lesson, Long> {
 
+    @EntityGraph(attributePaths = {"teacher", "subject", "group"})
+    @Override
+    List<Lesson> findAll();
+
+    @EntityGraph(attributePaths = {"teacher", "subject", "group"})
     List<Lesson> findByTeacherIdAndDateBetween(Long teacherId, LocalDate startDate, LocalDate endDate);
 
+    @EntityGraph(attributePaths = {"teacher", "subject", "group"})
     List<Lesson> findByGroupIdAndDateBetween(Long groupId, LocalDate startDate, LocalDate endDate);
 
     boolean existsByGroupIdAndDateAndLessonNumber(Long groupId, LocalDate date, Integer lessonNumber);
@@ -23,4 +31,11 @@ public interface LessonRepository extends JpaRepository<Lesson, Long> {
 
     @Modifying
     void deleteByGroupId(Long groupId);
+
+    @Modifying
+    void deleteBySubjectId(Long subjectId);
+
+    @EntityGraph(attributePaths = {"teacher", "subject", "group"})
+    Optional<Lesson> findWithDetailsById(Long id);
+
 }

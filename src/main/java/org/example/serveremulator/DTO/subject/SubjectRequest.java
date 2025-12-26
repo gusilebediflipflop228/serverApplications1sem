@@ -1,4 +1,4 @@
-package org.example.serveremulator.DTO;
+package org.example.serveremulator.DTO.subject;
 public class SubjectRequest {
     private String name;
 

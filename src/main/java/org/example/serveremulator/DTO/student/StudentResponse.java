@@ -1,4 +1,4 @@
-package org.example.serveremulator.DTO;
+package org.example.serveremulator.DTO.student;
 
 public class StudentResponse {
     private Long id;
